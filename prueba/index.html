@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub y DEV.AR - Guía Completa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f6f8fa;
+            color: #24292e;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #24292e, #2d333b);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .github-section {
+            border-top: 4px solid #24292e;
+        }
+        
+        .dev-ar-section {
+            border-top: 4px solid #28a745;
+        }
+        
+        .section h2 {
+            color: #0366d6;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .section h3 {
+            color: #24292e;
+            margin: 20px 0 12px;
+            font-size: 1.3rem;
+        }
+        
+        .step {
+            margin-bottom: 25px;
+            padding-left: 25px;
+            border-left: 4px solid #0366d6;
+            position: relative;
+        }
+        
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0366d6;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            font-weight: bold;
+            position: absolute;
+            left: -15px;
+            top: 0;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .step-content {
+            margin-left: 25px;
+        }
+        
+        .code-block {
+            background-color: #f6f8fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            margin: 12px 0;
+            overflow-x: auto;
+            font-size: 1rem;
+        }
+        
+        .highlight {
+            background-color: #fff8e1;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #d46b08;
+        }
+        
+        .mark {
+            background-color: #ffeb3b;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .ui-preview {
+            background-color: #f8f9fa;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 18px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .ui-preview:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .ui-element {
+            background: white;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 12px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .ui-button {
+            background: #2ea44f;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .ui-button.secondary {
+            background: #f6f8fa;
+            color: #24292e;
+            border: 1px solid #e1e4e8;
+        }
+        
+        .ui-input {
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            padding: 8px 12px;
+            width: 100%;
+            margin: 5px 0;
+        }
+        
+        .ui-checkbox {
+            margin-right: 10px;
+        }
+        
+        .ui-label {
+            font-weight: 600;
+            margin-right: 10px;
+            min-width: 120px;
+        }
+        
+        .ui-caption {
+            margin-top: 10px;
+            font-style: italic;
+            color: #6c757d;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .note {
+            background-color: #e3f2fd;
+            border-left: 5px solid #2196f3;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        
+        .note strong {
+            color: #0d47a1;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            color: #6c757d;
+            font-size: 0.95rem;
+            border-top: 1px solid #e1e4e8;
+        }
+        
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            header {
+                padding: 30px 0;
+            }
+            
+            header h1 {
+                font-size: 1.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>GitHub y DEV.AR</h1>
+            <p>Guía completa para crear repositorios y configurar dominios personalizados</p>
+        </header>
+        
+        <div class="content">
+            <div class="section github-section">
+                <h2>GitHub.com</h2>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Crear nuevo repositorio</h3>
+                        <p>Accede a GitHub y crea un nuevo repositorio para tu proyecto.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>¿Qué contiene un Repositorio?</h3>
+                        <p>Un repositorio es esencialmente el lugar donde se almacena:</p>
+                        <ul>
+                            <li><span class="highlight">Todo el código fuente y archivos</span> de tu proyecto (archivos HTML, CSS, JavaScript, Python, imágenes, documentación, etc.).</li>
+                            <li>El <span class="highlight">historial completo de revisiones</span> de cada uno de esos archivos.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Configuración inicial</h3>
+                        <p><strong>Sign up</strong> - Primer ingreso con una cuenta de Google</p>
+                        <p><strong>Sign in</strong> - Acceso con una cuenta ya creada</p>
+                        
+                        <div class="ui-preview">
+                            <div class="ui-element">
+                                <button class="ui-button">Sign up with Google</button>
+                            </div>
+                            <div class="ui-element">
+                                <button class="ui-button secondary">Sign in</button>
+                            </div>
+                            <div class="ui-caption">Interfaz de inicio de sesión de GitHub</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Crear repositorio</h3>
+                        
+                        <div class="ui-preview">
+                            <div class="ui-element">
+                                <span class="ui-label">Repository name</span>
+                                <input type="text" class="ui-input" placeholder="trinidadprueba2015">
+                            </div>
+                            <div class="ui-element">
+                                <span class="ui-label">Description</span>
+                                <input type="text" class="ui-input" placeholder="(optional)">
+                            </div>
+                            <div class="ui-element">
+                                <input type="checkbox" class="ui-checkbox" checked>
+                                <span>Add a README file</span>
+                            </div>
+                            <div class="ui-element">
+                                <button class="ui-button">Create repository</button>
+                            </div>
+                            <div class="ui-caption">Formulario para crear un nuevo repositorio en GitHub</div>
+                        </div>
+                        
+                        <div class="note">
+                            <p><strong>Ejemplo:</strong> Nombre: trinidadprueba2015</p>
+                            <p>URL resultante: trinidadprueba2015-boop.github.io</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Subir archivos</h3>
+                        <p>En <span class="highlight">Add file</span> aparece la ventana para subir los archivos de la página web.</p>
+                        <p>Guardar con <span class="mark">Commit changes</span></p>
+                        
+                        <div class="ui-preview">
+                            <div class="ui-element">
+                                <button class="ui-button">Upload files</button>
+                            </div>
+                            <div class="ui-element">
+                                <button class="ui-button secondary">Create new file</button>
+                            </div>
+                            <div class="ui-element">
+                                <button class="ui-button">Commit changes</button>
+                            </div>
+                            <div class="ui-caption">Opciones para agregar archivos al repositorio</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>Configurar GitHub Pages</h3>
+                        <p><span class="mark">Build and deploy from a branch</span> - Demora un poco y aparece la página de GitHub.</p>
+                        <p>Abajo tiene que estar <span class="mark">main</span></p>
+                        
+                        <div class="ui-preview">
+                            <div class="ui-element">
+                                <span class="ui-label">Source</span>
+                                <select class="ui-input">
+                                    <option>Deploy from a branch</option>
+                                </select>
+                            </div>
+                            <div class="ui-element">
+                                <span class="ui-label">Branch</span>
+                                <select class="ui-input">
+                                    <option>main</option>
+                                </select>
+                            </div>
+                            <div class="ui-element">
+                                <span class="ui-label">Custom domain</span>
+                                <input type="text" class="ui-input" placeholder="trinidadprueba2025.dev.ar">
+                            </div>
+                            <div class="ui-caption">Configuración de GitHub Pages para desplegar el sitio</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section dev-ar-section">
+                <h2>DEV.AR</h2>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Crear cuenta</h3>
+                        <p>Crear cuenta con Google en DEV.AR</p>
+                        
+                        <div class="ui-preview">
+                            <div class="ui-element">
+                                <button class="ui-button">Registrarse con Google</button>
+                            </div>
+                            <div class="ui-element">
+                                <button class="ui-button secondary">Registrarse con email</button>
+                            </div>
+                            <div class="ui-caption">Página de registro de DEV.AR</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Configurar dominio personalizado</h3>
+                        <p>En GitHub, en <span class="mark">Custom domain</span> colocar la dirección de la web en dev.ar</p>
+                        
+                        <div class="code-block">
+                            trinidadprueba2025.dev.ar<br>
+                            trinidadprueba2015-boop.github.io
+                        </div>
+                        
+                        <div class="ui-preview">
+                            <div class="ui-element">
+                                <span class="ui-label">Custom domain</span>
+                                <input type="text" class="ui-input" value="trinidadprueba2025.dev.ar">
+                            </div>
+                            <div class="ui-element">
+                                <input type="checkbox" class="ui-checkbox" checked>
+                                <span>Enforce HTTPS</span>
+                            </div>
+                            <div class="ui-caption">Configuración de dominio personalizado en GitHub Pages</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Agregar archivo CNAME</h3>
+                        <p>Agregar archivo <span class="highlight">CNAME</span> con el nombre de la página creada en dev.ar</p>
+                        
+                        <div class="code-block">
+                            CNAME -- trinidadprueba2025.dev.ar
+                        </div>
+                        
+                        <div class="ui-preview">
+                            <div class="ui-element">
+                                <span class="ui-label">Create new file</span>
+                                <input type="text" class="ui-input" value="CNAME">
+                            </div>
+                            <div class="ui-element">
+                                <textarea class="ui-input" rows="3">trinidadprueba2025.dev.ar</textarea>
+                            </div>
+                            <div class="ui-element">
+                                <button class="ui-button">Commit new file</button>
+                            </div>
+                            <div class="ui-caption">Creación del archivo CNAME en el repositorio</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Actualizar DNS</h3>
+                        <p>En DEV.AR, realizar la configuración de <span class="mark">ACTUALIZAR DNS</span> para que apunte a tu repositorio de GitHub.</p>
+                        
+                        <div class="ui-preview">
+                            <div class="ui-element">
+                                <span class="ui-label">Tipo</span>
+                                <select class="ui-input">
+                                    <option>A Record</option>
+                                    <option>CNAME</option>
+                                </select>
+                            </div>
+                            <div class="ui-element">
+                                <span class="ui-label">Nombre</span>
+                                <input type="text" class="ui-input" value="trinidadprueba2025">
+                            </div>
+                            <div class="ui-element">
+                                <span class="ui-label">Valor</span>
+                                <input type="text" class="ui-input" value="trinidadprueba2015-boop.github.io">
+                            </div>
+                            <div class="ui-element">
+                                <button class="ui-button">ACTUALIZAR DNS</button>
+                            </div>
+                            <div class="ui-caption">Panel de configuración DNS en DEV.AR</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="note">
+                    <p><strong>Nota importante:</strong> Después de configurar el dominio personalizado, GitHub Pages creará automáticamente un archivo CNAME en tu repositorio. Si lo agregas manualmente, asegúrate de que coincida exactamente con el dominio configurado.</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Guía de configuración de GitHub y DEV.AR - Todos los derechos reservados</p>
+        </footer>
+    </div>
+</body>
+</html>
